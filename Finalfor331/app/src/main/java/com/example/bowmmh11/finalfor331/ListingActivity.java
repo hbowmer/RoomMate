@@ -7,6 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class ListingActivity extends ActionBarActivity {
@@ -35,7 +36,13 @@ public class ListingActivity extends ActionBarActivity {
                 EditText eYear = (EditText) findViewById(R.id.year);
                 String sYear = eYear.getText().toString();
 
-               //Push this information to the Database Handler somehow
+                //Push this information to the Database Handler somehow
+
+                setResult(RESULT_OK);
+                finish();
+
+                Toast listingSuccessToast = Toast.makeText(getApplicationContext(), "Listing Created", Toast.LENGTH_LONG);
+                listingSuccessToast.show();
 
 
             }

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 public class OptionsActivity extends ActionBarActivity {
@@ -43,6 +44,21 @@ public class OptionsActivity extends ActionBarActivity {
                 //Call the new activity
                 Intent i = new Intent(OptionsActivity.this, SendMessageActivity.class);
                 startActivity(i);
+            }
+        });
+
+        Button logoutbutton = (Button) findViewById(R.id.button_logout);
+        logoutbutton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                //Call the new activity
+                setResult(RESULT_OK);
+                finish();
+
+                Toast logoutSuccessToast = Toast.makeText(getApplicationContext(), "Logout Successful", Toast.LENGTH_LONG);
+                logoutSuccessToast.show();
+
             }
         });
     }

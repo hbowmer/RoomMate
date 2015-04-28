@@ -1,5 +1,6 @@
 package com.example.bowmmh11.finalfor331;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class LoginActivity extends ActionBarActivity {
@@ -17,6 +19,13 @@ public class LoginActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        Context context = getApplicationContext();
+        CharSequence failText = "Invalid Username/Password";
+        CharSequence successText = "Login Successful";
+        int duration = Toast.LENGTH_LONG;
+
+        final Toast loginFailureToast = Toast.makeText(context, failText, duration);
+        final Toast loginSuccessToast = Toast.makeText(context, successText, duration);
 
         Button registerbutton = (Button) findViewById(R.id.register_button);
         registerbutton.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +50,15 @@ public class LoginActivity extends ActionBarActivity {
                 String sPassword = ePassword.getText().toString();
 
                 //Pass this information to the database handler
+
+                if(sUsername.equals("bowmmh11") && sPassword.equals("csc331")) {
+                    Intent i = new Intent(LoginActivity.this, OptionsActivity.class);
+                    startActivity(i);
+                    loginSuccessToast.show();
+                } else {
+                    loginFailureToast.show();
+                }
+
             }
         });
     }

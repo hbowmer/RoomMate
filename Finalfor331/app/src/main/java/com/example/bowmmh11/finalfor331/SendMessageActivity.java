@@ -27,6 +27,9 @@ public class SendMessageActivity extends ActionBarActivity {
                 String sBody = eBody.getText().toString();
 
                 //Pass these to the database somehow
+
+                setResult(RESULT_OK);
+                finish();
             }
         });
     }
